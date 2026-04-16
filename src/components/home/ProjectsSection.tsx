@@ -23,6 +23,13 @@ export function ProjectsSection({ projectTab, onTabChange, onProjectNavigate }: 
         </button>
         <button
           type="button"
+          className={projectTab === 'ai' ? 'tab-button-home active' : 'tab-button-home'}
+          onClick={() => onTabChange('ai')}
+        >
+          AI Driven Product Design
+        </button>
+        <button
+          type="button"
           className={projectTab === 'id' ? 'tab-button-home active' : 'tab-button-home'}
           onClick={() => onTabChange('id')}
         >
@@ -41,7 +48,7 @@ export function ProjectsSection({ projectTab, onTabChange, onProjectNavigate }: 
             />
           ))}
         </div>
-      ) : (
+      ) : projectTab === 'id' ? (
         <div className="id-panel-home">
           <h3>Industrial Design</h3>
           <p>
@@ -51,6 +58,22 @@ export function ProjectsSection({ projectTab, onTabChange, onProjectNavigate }: 
           <div className="id-grid-home">
             {industrialPlaceholders.map((item) => (
               <div key={item} className="id-card-home">
+                Project
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="id-panel-home">
+          <h3>AI Driven Product Design</h3>
+          <p>
+            A collection of AI-enabled product design projects focused on prototyping, workflow
+            automation, and production-ready interactive systems. Case studies currently being
+            prepared — check back soon.
+          </p>
+          <div className="id-grid-home">
+            {industrialPlaceholders.map((item) => (
+              <div key={`ai-${item}`} className="id-card-home">
                 Project
               </div>
             ))}

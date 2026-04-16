@@ -1,5 +1,5 @@
 export type HeroTab = 'work' | 'info'
-export type ProjectTab = 'ux' | 'id'
+export type ProjectTab = 'ux' | 'id' | 'ai'
 
 export type ProjectCard = {
   number: string

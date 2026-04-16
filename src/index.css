@@ -511,7 +511,7 @@ body {
   }
 
   .hero-name-home {
-    font-size: clamp(52px, 6.5vw, 88px);
+    font-size: clamp(81px, 6.5vw, 88px);
     line-height: 0.94;
     letter-spacing: -0.02em;
     @apply mb-4 font-extrabold text-site-text;

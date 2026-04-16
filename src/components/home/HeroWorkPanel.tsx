@@ -4,7 +4,7 @@ type HeroWorkPanelProps = {
   scrollHintHidden: boolean
 }
 
-const heroRoles = ['Product Designer', 'UX Engineer', 'Vibe Coder']
+const heroRoles = ['Product Designer', 'UX Engineer', 'AI Driven Product Designer', 'Vibe Coder']
 const heroLoopRoles = [...heroRoles, heroRoles[0]]
 const heroRoleIntervalMs = 2450
 
