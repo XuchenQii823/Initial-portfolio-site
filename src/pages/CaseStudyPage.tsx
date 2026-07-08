@@ -278,6 +278,7 @@ export function CaseStudyPage() {
       <section id="cover" className="case-frame case-cover-frame page-scroll-target flex h-screen items-center justify-center overflow-hidden">
         <SafeImage
           src={study.cover.image}
+          sources={study.cover.sources}
           alt={study.cover.alt}
           className="h-full w-full object-contain"
           loading="eager"

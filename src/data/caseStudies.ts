@@ -25,8 +25,16 @@ export type Chapter = {
   page: number
   label: string
   image: string
+  sources?: ImageSource[]
   alt: string
   layers?: MediaLayer[]
+}
+
+export type ImageSource = {
+  srcSet: string
+  type: string
+  media?: string
+  sizes?: string
 }
 
 export type CaseStudyProtection = {
@@ -49,6 +57,7 @@ export type CaseStudy = {
   summary: string
   cover: {
     image: string
+    sources?: ImageSource[]
     alt: string
   }
   nextProject: {
@@ -62,6 +71,16 @@ export type CaseStudy = {
 const prototypeHref =
   'https://ttrsux.protopie.cloud/p/f13a50719620dc15dda423de?ui=true&scaleToFit=true&enableHotspotHints=true&cursorType=touch&mockup=true&bgColor=%23F5F5F5&bgImage=undefined&playSpeed=1'
 
+const strataImage = (fileName: string) => {
+  const image = `/assets/images/01strata/${fileName}.png`
+  const webp = `/assets/images/01strata/optimized/${encodeURIComponent(fileName)}.webp`
+
+  return {
+    image,
+    sources: [{ srcSet: webp, type: 'image/webp' }],
+  }
+}
+
 export const caseStudies: CaseStudy[] = [
   {
     slug: 'strata',
@@ -70,7 +89,7 @@ export const caseStudies: CaseStudy[] = [
     summary:
       'Production launcher restructure across two digital product lines, from information architecture to final UI rollout.',
     cover: {
-      image: '/assets/images/01strata/1_Overview.png',
+      ...strataImage('1_Overview'),
       alt: 'STRATA overview',
     },
     nextProject: {
@@ -78,18 +97,18 @@ export const caseStudies: CaseStudy[] = [
       title: 'LEXUS DIMENSION',
     },
     chapters: [
-      { id: 'ch-2', page: 2, label: 'Highlights', image: '/assets/images/01strata/2_Highlights.png', alt: 'Highlights' },
-      { id: 'ch-3', page: 3, label: 'Why Restructure', image: '/assets/images/01strata/3_Why_Restructure.png', alt: 'Why restructure' },
-      { id: 'ch-4', page: 4, label: 'The Problems', image: '/assets/images/01strata/4_The Problems.png', alt: 'The problems' },
-      { id: 'ch-5', page: 5, label: 'Design Decisions', image: '/assets/images/01strata/5_Design_Decisions.png', alt: 'Design decisions' },
-      { id: 'ch-6', page: 6, label: 'Interaction Architecture', image: '/assets/images/01strata/6_Interaction_Architecture.png', alt: 'Interaction architecture' },
-      { id: 'ch-7', page: 7, label: 'Visual Design', image: '/assets/images/01strata/7_Visual Design.png', alt: 'Visual design' },
-      { id: 'ch-8', page: 8, label: 'Post-Launch Iteration', image: '/assets/images/01strata/8_Post-Launch_Iteration.png', alt: 'Post-launch iteration' },
+      { id: 'ch-2', page: 2, label: 'Highlights', ...strataImage('2_Highlights'), alt: 'Highlights' },
+      { id: 'ch-3', page: 3, label: 'Why Restructure', ...strataImage('3_Why_Restructure'), alt: 'Why restructure' },
+      { id: 'ch-4', page: 4, label: 'The Problems', ...strataImage('4_The Problems'), alt: 'The problems' },
+      { id: 'ch-5', page: 5, label: 'Design Decisions', ...strataImage('5_Design_Decisions'), alt: 'Design decisions' },
+      { id: 'ch-6', page: 6, label: 'Interaction Architecture', ...strataImage('6_Interaction_Architecture'), alt: 'Interaction architecture' },
+      { id: 'ch-7', page: 7, label: 'Visual Design', ...strataImage('7_Visual Design'), alt: 'Visual design' },
+      { id: 'ch-8', page: 8, label: 'Post-Launch Iteration', ...strataImage('8_Post-Launch_Iteration'), alt: 'Post-launch iteration' },
       {
         id: 'ch-9',
         page: 9,
         label: 'Interactive Demo',
-        image: '/assets/images/01strata/9_Interactive_Demo.png',
+        ...strataImage('9_Interactive_Demo'),
         alt: 'Interactive demo',
         layers: [
           {
@@ -104,9 +123,9 @@ export const caseStudies: CaseStudy[] = [
           },
         ],
       },
-      { id: 'ch-10', page: 10, label: 'Full UI - Toyota', image: '/assets/images/01strata/10_Full_UI_Toyota.png', alt: 'Full UI Toyota' },
-      { id: 'ch-11', page: 11, label: 'Full UI - Lexus', image: '/assets/images/01strata/11_Full_UI_Lexus.png', alt: 'Full UI Lexus' },
-      { id: 'ch-12', page: 12, label: 'Retrospective', image: '/assets/images/01strata/12_Retrospective.png', alt: 'Retrospective' },
+      { id: 'ch-10', page: 10, label: 'Full UI - Toyota', ...strataImage('10_Full_UI_Toyota'), alt: 'Full UI Toyota' },
+      { id: 'ch-11', page: 11, label: 'Full UI - Lexus', ...strataImage('11_Full_UI_Lexus'), alt: 'Full UI Lexus' },
+      { id: 'ch-12', page: 12, label: 'Retrospective', ...strataImage('12_Retrospective'), alt: 'Retrospective' },
     ],
   },
   {

@@ -1,8 +1,16 @@
 import { useState } from 'react'
 import type { ImgHTMLAttributes } from 'react'
 
+export type ImageSource = {
+  srcSet: string
+  type: string
+  media?: string
+  sizes?: string
+}
+
 type SafeImageProps = {
   src: string
+  sources?: ImageSource[]
   alt: string
   className?: string
   fallbackClassName?: string
@@ -16,6 +24,7 @@ type SafeImageProps = {
 
 export function SafeImage({
   src,
+  sources,
   alt,
   className,
   fallbackClassName,
@@ -36,7 +45,7 @@ export function SafeImage({
     )
   }
 
-  return (
+  const image = (
     <img
       src={src}
       alt={alt}
@@ -48,5 +57,24 @@ export function SafeImage({
       onLoad={onLoad}
       onError={() => setHasError(true)}
     />
+  )
+
+  if (!sources?.length) {
+    return image
+  }
+
+  return (
+    <picture>
+      {sources.map((source) => (
+        <source
+          key={`${source.type}-${source.srcSet}-${source.media ?? 'default'}`}
+          srcSet={source.srcSet}
+          type={source.type}
+          media={source.media}
+          sizes={source.sizes ?? sizes}
+        />
+      ))}
+      {image}
+    </picture>
   )
 }

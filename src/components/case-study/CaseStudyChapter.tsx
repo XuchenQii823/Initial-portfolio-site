@@ -41,6 +41,7 @@ export function CaseStudyChapter({ chapter, locked = false }: CaseStudyChapterPr
       <div className={locked ? 'case-chapter-media case-chapter-media-locked' : 'case-chapter-media'}>
         <SafeImage
           src={chapter.image}
+          sources={chapter.sources}
           alt={chapter.alt}
           className="w-full"
           sizes="(min-width: 1024px) 72vw, 100vw"
