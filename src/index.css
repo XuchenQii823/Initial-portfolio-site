@@ -154,11 +154,21 @@ body {
     --dimension-content-left-shift: 2cm;
   }
 
+  .case-study-vitrum {
+    --vitrum-content-left-shift: 1.5cm;
+  }
+
   @media (min-width: 1025px) {
     .case-study-dimension .case-cover-frame,
     .case-study-dimension .case-study-chapters .case-frame {
       margin-left: calc(var(--content-offset) - var(--dimension-content-left-shift));
       margin-right: calc(var(--content-side-gap) + var(--dimension-content-left-shift));
+    }
+
+    .case-study-vitrum .case-cover-frame,
+    .case-study-vitrum .case-study-chapters .case-frame {
+      margin-left: calc(var(--content-offset) - var(--vitrum-content-left-shift));
+      margin-right: calc(var(--content-side-gap) + var(--vitrum-content-left-shift));
     }
   }
 
