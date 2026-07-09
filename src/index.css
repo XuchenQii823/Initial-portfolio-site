@@ -150,6 +150,18 @@ body {
     width: min(calc(var(--page-frame-width) * 1.1), calc(100vw - var(--content-offset) - var(--content-side-gap)));
   }
 
+  .case-study-dimension {
+    --dimension-content-left-shift: 2cm;
+  }
+
+  @media (min-width: 1025px) {
+    .case-study-dimension .case-cover-frame,
+    .case-study-dimension .case-study-chapters .case-frame {
+      margin-left: calc(var(--content-offset) - var(--dimension-content-left-shift));
+      margin-right: calc(var(--content-side-gap) + var(--dimension-content-left-shift));
+    }
+  }
+
   .page-scroll-target {
     scroll-margin-top: var(--nav-height);
   }
