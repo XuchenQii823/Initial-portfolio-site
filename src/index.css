@@ -132,12 +132,22 @@ body {
     --content-offset: var(--content-offset-base);
   }
 
+  .case-study-strata {
+    --strata-content-offset-ratio: 0.6;
+    --strata-content-left-shift: 1cm;
+  }
+
   .case-study-strata .case-study-chapters {
-    --content-offset: calc(var(--content-offset-base) * 0.7);
+    --content-offset: calc((var(--content-offset-base) * var(--strata-content-offset-ratio)) - var(--strata-content-left-shift));
   }
 
   .case-study-strata .case-cover-frame {
-    --content-offset: calc(var(--content-offset-base) * 0.7);
+    --content-offset: calc((var(--content-offset-base) * var(--strata-content-offset-ratio)) - var(--strata-content-left-shift));
+  }
+
+  .case-study-strata .case-cover-frame,
+  .case-study-strata .case-study-chapters .case-frame {
+    width: min(calc(var(--page-frame-width) * 1.1), calc(100vw - var(--content-offset) - var(--content-side-gap)));
   }
 
   .page-scroll-target {
@@ -1205,6 +1215,12 @@ body {
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
+  }
+
+  .case-study-strata .case-cover-frame,
+  .case-study-strata .case-study-chapters .case-frame {
+    width: 100%;
+    max-width: 100%;
   }
 
   .nav-desktop-home {
