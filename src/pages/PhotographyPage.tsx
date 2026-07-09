@@ -30,7 +30,7 @@ const getSeed = (value: string) => {
 }
 
 export function PhotographyPage() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [selectedImage, setSelectedImage] = useState<PhotographyImage | null>(null)
   const [gridWidth, setGridWidth] = useState(0)
   const [viewportHeight, setViewportHeight] = useState(0)
   const [streamHeight, setStreamHeight] = useState(0)
@@ -298,11 +298,12 @@ export function PhotographyPage() {
                       type="button"
                       className="photography-tile-home"
                       style={{ width: item.displayWidth, height: item.displayHeight }}
-                      onClick={() => setSelectedImage(item.src)}
+                      onClick={() => setSelectedImage(item)}
                     >
                       <span className="photography-media-frame-home">
                         <SafeImage
                           src={item.src}
+                          sources={item.sources}
                           alt="Photography work"
                           className="photography-image-home"
                           sizes="(min-width: 1280px) 24vw, (min-width: 768px) 40vw, 100vw"
@@ -344,7 +345,8 @@ export function PhotographyPage() {
           </button>
           <div className="photography-modal-frame-home" onClick={(event) => event.stopPropagation()}>
             <SafeImage
-              src={selectedImage}
+              src={selectedImage.src}
+              sources={selectedImage.sources}
               alt="Photography enlarged"
               className="photography-modal-image-home"
               loading="eager"

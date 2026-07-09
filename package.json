@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "node scripts/generate-static-files.mjs && tsc -b && vite build",
     "lint": "eslint .",
-    "optimize:strata-images": "node scripts/optimize-strata-images.mjs",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "optimize:strata-images": "node scripts/optimize-images.mjs strata",
     "preview": "vite preview"
   },
   "dependencies": {

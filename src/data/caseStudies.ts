@@ -71,15 +71,21 @@ export type CaseStudy = {
 const prototypeHref =
   'https://ttrsux.protopie.cloud/p/f13a50719620dc15dda423de?ui=true&scaleToFit=true&enableHotspotHints=true&cursorType=touch&mockup=true&bgColor=%23F5F5F5&bgImage=undefined&playSpeed=1'
 
-const strataImage = (fileName: string) => {
-  const image = `/assets/images/01strata/${fileName}.png`
-  const webp = `/assets/images/01strata/optimized/${encodeURIComponent(fileName)}.webp`
+const encodeImagePathSegment = (value: string) => encodeURIComponent(value).replace(/%26/g, '&')
+
+const optimizedPngImage = (directory: string, fileName: string) => {
+  const image = `/assets/images/${directory}/${fileName}.png`
+  const webp = `/assets/images/${directory}/optimized/${encodeImagePathSegment(fileName)}.webp`
 
   return {
     image,
     sources: [{ srcSet: webp, type: 'image/webp' }],
   }
 }
+
+const strataImage = (fileName: string) => optimizedPngImage('01strata', fileName)
+const dimensionImage = (fileName: string) => optimizedPngImage('02dimension', fileName)
+const vitrumImage = (fileName: string) => optimizedPngImage('03vitrum', fileName)
 
 export const caseStudies: CaseStudy[] = [
   {
@@ -135,7 +141,7 @@ export const caseStudies: CaseStudy[] = [
     summary:
       'Spatial interaction concept exploring 3D navigation, gesture control, and cross-screen linkage.',
     cover: {
-      image: '/assets/images/02dimension/01_Cover.png',
+      ...dimensionImage('01_Cover'),
       alt: 'Lexus Dimension overview',
     },
     nextProject: {
@@ -143,16 +149,16 @@ export const caseStudies: CaseStudy[] = [
       title: 'VITRUM',
     },
     chapters: [
-      { id: 'ch-2', page: 2, label: 'Hero Shot', image: '/assets/images/02dimension/02_Hero_Shot.png', alt: 'Hero shot' },
-      { id: 'ch-3', page: 3, label: 'Context', image: '/assets/images/02dimension/03_Context.png', alt: 'Context' },
-      { id: 'ch-4', page: 4, label: 'Design Challenges', image: '/assets/images/02dimension/04_Design_Challenges.png', alt: 'Design challenges' },
-      { id: 'ch-5', page: 5, label: 'Challenge 1 - Interaction Exploration', image: '/assets/images/02dimension/05_Challenge_1_Interaction Exploration.png', alt: 'Interaction exploration' },
-      { id: 'ch-6', page: 6, label: 'Challenge 1 - 3D Core Experience', image: '/assets/images/02dimension/06_Challenge_1_Respnse_3D Experience.png', alt: '3D core experience' },
+      { id: 'ch-2', page: 2, label: 'Hero Shot', ...dimensionImage('02_Hero_Shot'), alt: 'Hero shot' },
+      { id: 'ch-3', page: 3, label: 'Context', ...dimensionImage('03_Context'), alt: 'Context' },
+      { id: 'ch-4', page: 4, label: 'Design Challenges', ...dimensionImage('04_Design_Challenges'), alt: 'Design challenges' },
+      { id: 'ch-5', page: 5, label: 'Challenge 1 - Interaction Exploration', ...dimensionImage('05_Challenge_1_Interaction Exploration'), alt: 'Interaction exploration' },
+      { id: 'ch-6', page: 6, label: 'Challenge 1 - 3D Core Experience', ...dimensionImage('06_Challenge_1_Respnse_3D Experience'), alt: '3D core experience' },
       {
         id: 'ch-7',
         page: 7,
         label: 'Challenge 1 - Gesture Navigation Demo',
-        image: '/assets/images/02dimension/07_Challenge_1_Gesture_Navigation_Demo.png',
+        ...dimensionImage('07_Challenge_1_Gesture_Navigation_Demo'),
         alt: 'Gesture navigation demo',
         layers: [
           {
@@ -170,7 +176,7 @@ export const caseStudies: CaseStudy[] = [
         id: 'ch-8',
         page: 8,
         label: 'Challenge 2 - BB Screen Definition',
-        image: '/assets/images/02dimension/08_Challenge_2_BB_Screen_Definition.png',
+        ...dimensionImage('08_Challenge_2_BB_Screen_Definition'),
         alt: 'BB screen definition',
         layers: [
           {
@@ -193,7 +199,7 @@ export const caseStudies: CaseStudy[] = [
           },
         ],
       },
-      { id: 'ch-9', page: 9, label: 'Challenge 1 - Reach Zone Layout System', image: '/assets/images/02dimension/09_Challenge_1&3_Layout_System.png', alt: 'Reach zone layout system' },
+      { id: 'ch-9', page: 9, label: 'Challenge 1 - Reach Zone Layout System', ...dimensionImage('09_Challenge_1&3_Layout_System'), alt: 'Reach zone layout system' },
     ],
   },
   {
@@ -203,7 +209,7 @@ export const caseStudies: CaseStudy[] = [
     summary:
       'Future-facing interaction system covering experiments, design system work, demo flows, and real-world validation.',
     cover: {
-      image: '/assets/images/03vitrum/1_Overview.png',
+      ...vitrumImage('1_Overview'),
       alt: 'Vitrum overview',
     },
     nextProject: {
@@ -224,18 +230,18 @@ export const caseStudies: CaseStudy[] = [
       errorMessage: 'Incorrect password. Please try again.',
     },
     chapters: [
-      { id: 'ch-2', page: 2, label: 'Context', image: '/assets/images/03vitrum/2_Context.png', alt: 'Context' },
-      { id: 'ch-3', page: 3, label: 'Ch.01 - Experiment 01', image: '/assets/images/03vitrum/3_Chapter 01_Experiment_01.png', alt: 'Experiment 01' },
-      { id: 'ch-4', page: 4, label: 'Ch.01 - Experiment 02 and 03', image: '/assets/images/03vitrum/4_Chapter 01_Experiment_02&03.png', alt: 'Experiment 02 and 03' },
-      { id: 'ch-5', page: 5, label: 'Ch.01 - The Specification', image: '/assets/images/03vitrum/5_Chapter 01_The specification.png', alt: 'The specification' },
-      { id: 'ch-6', page: 6, label: 'Ch.01 - Retrospective', image: '/assets/images/03vitrum/6_Chapter 01_Retrospective.png', alt: 'Retrospective' },
-      { id: 'ch-7', page: 7, label: 'Ch.02 - Design System', image: '/assets/images/03vitrum/7_Chapter 02_Design System.png', alt: 'Design system' },
-      { id: 'ch-8', page: 8, label: 'Ch.02 - Design and Practice', image: '/assets/images/03vitrum/8_Chapter 02_Design & Practice.png', alt: 'Design and practice' },
+      { id: 'ch-2', page: 2, label: 'Context', ...vitrumImage('2_Context'), alt: 'Context' },
+      { id: 'ch-3', page: 3, label: 'Ch.01 - Experiment 01', ...vitrumImage('3_Chapter 01_Experiment_01'), alt: 'Experiment 01' },
+      { id: 'ch-4', page: 4, label: 'Ch.01 - Experiment 02 and 03', ...vitrumImage('4_Chapter 01_Experiment_02&03'), alt: 'Experiment 02 and 03' },
+      { id: 'ch-5', page: 5, label: 'Ch.01 - The Specification', ...vitrumImage('5_Chapter 01_The specification'), alt: 'The specification' },
+      { id: 'ch-6', page: 6, label: 'Ch.01 - Retrospective', ...vitrumImage('6_Chapter 01_Retrospective'), alt: 'Retrospective' },
+      { id: 'ch-7', page: 7, label: 'Ch.02 - Design System', ...vitrumImage('7_Chapter 02_Design System'), alt: 'Design system' },
+      { id: 'ch-8', page: 8, label: 'Ch.02 - Design and Practice', ...vitrumImage('8_Chapter 02_Design & Practice'), alt: 'Design and practice' },
       {
         id: 'ch-9',
         page: 9,
         label: 'Ch.02 - Demo',
-        image: '/assets/images/03vitrum/9_Chapter 02_Demo.png',
+        ...vitrumImage('9_Chapter 02_Demo'),
         alt: 'Demo',
         layers: [
           {
@@ -249,13 +255,13 @@ export const caseStudies: CaseStudy[] = [
           },
         ],
       },
-      { id: 'ch-10', page: 10, label: 'Ch.02 - Interaction', image: '/assets/images/03vitrum/10_Chapter 02_Interaction.png', alt: 'Interaction' },
-      { id: 'ch-11', page: 11, label: 'Ch.03 - Real-Vehicle Validation', image: '/assets/images/03vitrum/11_Chapter 03_Real-Vehicle_Validation.png', alt: 'Real-vehicle validation' },
+      { id: 'ch-10', page: 10, label: 'Ch.02 - Interaction', ...vitrumImage('10_Chapter 02_Interaction'), alt: 'Interaction' },
+      { id: 'ch-11', page: 11, label: 'Ch.03 - Real-Vehicle Validation', ...vitrumImage('11_Chapter 03_Real-Vehicle_Validation'), alt: 'Real-vehicle validation' },
       {
         id: 'ch-12',
         page: 12,
         label: 'Ch.03 - Inner Display Design and Validation',
-        image: '/assets/images/03vitrum/12_Chapter 03_Inner_Display.png',
+        ...vitrumImage('12_Chapter 03_Inner_Display'),
         alt: 'Inner display design and validation',
         layers: [
           {
@@ -282,7 +288,7 @@ export const caseStudies: CaseStudy[] = [
         id: 'ch-13',
         page: 13,
         label: 'Ch.03 - Outer Display Design and Validation',
-        image: '/assets/images/03vitrum/13_Chapter 03_Outer_Display.png',
+        ...vitrumImage('13_Chapter 03_Outer_Display'),
         alt: 'Outer display design and validation',
         layers: [
           {
@@ -305,7 +311,7 @@ export const caseStudies: CaseStudy[] = [
           },
         ],
       },
-      { id: 'ch-14', page: 14, label: 'Retrospective', image: '/assets/images/03vitrum/14_Retrospective.png', alt: 'Retrospective' },
+      { id: 'ch-14', page: 14, label: 'Retrospective', ...vitrumImage('14_Retrospective'), alt: 'Retrospective' },
     ],
   },
 ]
