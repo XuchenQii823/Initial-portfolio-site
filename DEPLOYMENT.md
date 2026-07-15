@@ -131,6 +131,25 @@ Most maintenance should happen only in these locations:
 - `public/assets/images/...`
 - `public/assets/videos/...`
 
+The Global Experience Matrix case study is maintained separately under the
+`subprojects/gxm` Git submodule and is published at `/projects/gxm/`.
+
+For a new checkout, clone with submodules enabled:
+
+```bash
+git clone --recurse-submodules <your-github-repo-url>
+```
+
+For an existing checkout, initialize the pinned submodule revision:
+
+```bash
+git submodule update --init --recursive
+```
+
+To publish a GXM update, commit and push the change in the GXM repository first,
+then update and commit the submodule pointer in this repository. Production builds
+always use the pinned commit instead of automatically following the child `main` branch.
+
 Recommended update workflow:
 
 1. Replace assets or update text.
@@ -190,4 +209,5 @@ Update these places together:
 - Contact mailto flow
 - 404 page
 - Direct refresh on `/projects/strata`, `/projects/dimension`, `/projects/vitrum`, and `/photography`
+- Direct load and refresh on `/projects/gxm/`, including its images and Back to Projects link
 - `sitemap.xml`, `robots.txt`, and `site.webmanifest` load correctly on the production domain

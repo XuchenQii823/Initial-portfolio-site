@@ -1,9 +1,14 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "installCommand": "npm ci && npm --prefix subprojects/gxm ci",
   "rewrites": [
     {
-      "source": "/((?!assets/|favicon\\.svg|icons\\.svg|robots\\.txt|sitemap\\.xml|site\\.webmanifest).*)",
+      "source": "/projects/gxm",
+      "destination": "/projects/gxm/index.html"
+    },
+    {
+      "source": "/((?!projects/gxm(?:/|$)|assets/|favicon\\.svg|icons\\.svg|robots\\.txt|sitemap\\.xml|site\\.webmanifest).*)",
       "destination": "/index"
     }
   ],
@@ -31,6 +36,15 @@
     },
     {
       "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/projects/gxm/assets/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

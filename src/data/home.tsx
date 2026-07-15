@@ -9,6 +9,7 @@ export type ProjectCard = {
   tags: string[]
   image?: string
   href?: string
+  navigation?: 'spa' | 'document'
   comingSoon?: boolean
 }
 
@@ -28,6 +29,7 @@ export const uxProjects: ProjectCard[] = [
     tags: ['Interaction Architecture', 'Context-Aware UI', 'Usability Research', 'Design Systems', 'Cross-Platform UX'],
     image: '/assets/images/home/preview-strata.png',
     href: '/projects/strata',
+    navigation: 'spa',
   },
   {
     number: '02',
@@ -37,6 +39,7 @@ export const uxProjects: ProjectCard[] = [
     tags: ['Spatial Interaction', 'Gesture Design', 'Concept Development'],
     image: '/assets/images/home/preview-dimension.png',
     href: '/projects/dimension',
+    navigation: 'spa',
   },
   {
     number: '03',
@@ -46,13 +49,18 @@ export const uxProjects: ProjectCard[] = [
     tags: ['Spatial UI', 'Design System', 'Prototyping', 'User Validation'],
     image: '/assets/images/home/preview-vitrum.png',
     href: '/projects/vitrum',
+    navigation: 'spa',
   },
   {
     number: '04',
-    title: 'Global UX Strategy Development',
-    description: 'Case study in development.',
-    tags: ['UX Strategy', 'Coming Soon'],
-    comingSoon: true,
+    title: 'GLOBAL EXPERIENCE MATRIX',
+    subtitle: 'Global UX Strategy',
+    description:
+      'A two-year global automotive UX strategy program spanning five regions, translating mixed-methods research into a validated experience matrix and reusable product roadmap framework.',
+    tags: ['UX Strategy', 'Global User Research', 'Mixed-Methods Research', 'Automotive UX'],
+    image: '/assets/images/home/preview-gxm.webp',
+    href: '/projects/gxm/',
+    navigation: 'document',
   },
   {
     number: '05',

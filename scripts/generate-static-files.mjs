@@ -5,7 +5,7 @@ const projectRoot = process.cwd()
 const publicDir = path.join(projectRoot, 'public')
 const siteUrl = (process.env.VITE_SITE_URL || 'https://example.com').replace(/\/+$/, '')
 
-const routes = ['/', '/projects/strata', '/projects/dimension', '/projects/vitrum', '/photography']
+const routes = ['/', '/projects/strata', '/projects/dimension', '/projects/vitrum', '/projects/gxm/', '/photography']
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

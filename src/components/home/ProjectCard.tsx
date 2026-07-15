@@ -50,6 +50,20 @@ export function ProjectCard({ project, reverse, onNavigate }: ProjectCardProps) 
     : 'project-row-home'
 
   if (project.href) {
+    if (project.navigation === 'document') {
+      return (
+        <a
+          href={project.href}
+          className={className}
+          onClick={() => {
+            onNavigate?.()
+          }}
+        >
+          {content}
+        </a>
+      )
+    }
+
     return (
       <Link
         to={project.href}

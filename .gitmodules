@@ -1,0 +1,3 @@
+[submodule "subprojects/gxm"]
+	path = subprojects/gxm
+	url = https://github.com/XuchenQii823/GXM-Case-Study-Portfolio.git
