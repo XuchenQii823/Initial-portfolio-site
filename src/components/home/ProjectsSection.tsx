@@ -44,6 +44,7 @@ export function ProjectsSection({ projectTab, onTabChange, onProjectNavigate }: 
               key={project.number}
               project={project}
               reverse={index % 2 !== 0}
+              priority={index < 2}
               onNavigate={onProjectNavigate}
             />
           ))}
